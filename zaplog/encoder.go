@@ -16,6 +16,10 @@ type Encoder struct {
 	specialKeys map[string]struct{}
 }
 
+var msgReplacer = strings.NewReplacer("\n", "\\n", "\r", "\\r")
+var keyReplacer = strings.NewReplacer("\n", "\\n", "\r", "\\r", "=", "")
+var valueReplacer = strings.NewReplacer("\n", "\\n", "\r", "\\r", ";", "")
+
 // NewEncoder create a new zapcore.Encoder configured for the dliver system needs.
 // During encoding field names matching a specialKeys entry will be added to the log message separately from the other fields.
 func NewEncoder(specialKeys []string) func(zapcore.EncoderConfig) (zapcore.Encoder, error) {
@@ -63,14 +67,14 @@ func (de *Encoder) EncodeEntry(entry zapcore.Entry, fields []zapcore.Field) (*bu
 		buf.AppendString(" - ")
 	}
 
-	buf.AppendString(entry.Message)
+	buf.AppendString(msgReplacer.Replace(entry.Message))
 	buf.AppendString(" ##<")
 
 	for i := len(fields) - 1; i >= 0; i-- {
 		field := fields[i]
 		if _, ok := de.specialKeys[field.Key]; ok {
-			buf.AppendString(field.Key + "=")
-			buf.AppendString(strings.Replace(field.String, ";", "", -1))
+			buf.AppendString(keyReplacer.Replace(field.Key) + "=")
+			buf.AppendString(valueReplacer.Replace(field.String))
 			buf.AppendString(";")
 			fields = append(fields[0:i], fields[i+1:]...)
 		}
