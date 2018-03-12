@@ -17,11 +17,12 @@ type Encoder struct {
 }
 
 var msgReplacer = strings.NewReplacer("\n", "\\n", "\r", "\\r")
-var keyReplacer = strings.NewReplacer("\n", "\\n", "\r", "\\r", "=", "")
-var valueReplacer = strings.NewReplacer("\n", "\\n", "\r", "\\r", ";", "")
+var keyReplacer = strings.NewReplacer("\n", "\\n", "\r", "\\r", "=", "", ";", "")
+var valueReplacer = keyReplacer
 
 // NewEncoder create a new zapcore.Encoder configured for the dliver system needs.
 // During encoding field names matching a specialKeys entry will be added to the log message separately from the other fields.
+// Special field keys and values may not include ';' and '='. These characters will be replaced with empty string.
 func NewEncoder(specialKeys []string) func(zapcore.EncoderConfig) (zapcore.Encoder, error) {
 	return func(cfg zapcore.EncoderConfig) (zapcore.Encoder, error) {
 		// copy the struct
