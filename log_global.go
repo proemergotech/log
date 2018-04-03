@@ -32,6 +32,6 @@ func Panic(ctx context.Context, msg string, keysAndValues ...interface{}) {
 }
 
 // Dump should be used only during development and should not stay in production code.
-func Dump(msg string, keysAndValues ...interface{}) {
-	global.Dump(msg, keysAndValues...)
+func Dump(msg string, v ...interface{}) {
+	global.Dump(msg, v...)
 }
