@@ -9,11 +9,7 @@
 
 [[projects]]
   name = "github.com/gin-gonic/gin"
-  packages = [
-    ".",
-    "binding",
-    "render"
-  ]
+  packages = [".","binding","render"]
   revision = "d459835d2b077e44f7c9b453505ee29881d5d12d"
   version = "v1.2"
 
@@ -62,14 +58,7 @@
 
 [[projects]]
   name = "go.uber.org/zap"
-  packages = [
-    ".",
-    "buffer",
-    "internal/bufferpool",
-    "internal/color",
-    "internal/exit",
-    "zapcore"
-  ]
+  packages = [".","buffer","internal/bufferpool","internal/color","internal/exit","zapcore"]
   revision = "35aad584952c3e7020db7b839f6b102de6271f89"
   version = "v1.7.1"
 
@@ -87,11 +76,7 @@
 
 [[projects]]
   name = "gopkg.in/h2non/gentleman.v2"
-  packages = [
-    "context",
-    "plugin",
-    "utils"
-  ]
+  packages = ["context","plugin","utils"]
   revision = "e0f81be2f4064ea7aa7470e9daddd2dc8e8152c7"
   version = "v2.0.3"
 
@@ -104,6 +89,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "e814d8cb98f94b1d559393446da5217ca6c69267c90e71a35ba6ba2aae1a0153"
+  inputs-digest = "32f68666ae53725a6f5407ed11019cb43598c6359a1558c7167ad1997347e1d0"
   solver-name = "gps-cdcl"
   solver-version = 1
