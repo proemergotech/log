@@ -18,7 +18,7 @@ func NewJaegerLogger(l log.Logger) *JaegerLogger {
 }
 
 func (jl *JaegerLogger) Error(msg string) {
-	jl.logger.Error(context.Background(), msg, errors.New(msg))
+	jl.logger.Error(context.Background(), msg, "errors", errors.New(msg))
 }
 
 func (jl *JaegerLogger) Infof(msg string, v ...interface{}) {
