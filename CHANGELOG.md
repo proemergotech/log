@@ -1,5 +1,8 @@
 # Release Notes
 
+## 0.1.3 / 2018-04-19
+- added IsDebug() to global logger
+
 ## 0.1.2 / 2018-04-03
 - removed version contraint from geb-client dependency
 

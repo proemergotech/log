@@ -31,6 +31,10 @@ func Panic(ctx context.Context, msg string, keysAndValues ...interface{}) {
 	global.Panic(ctx, msg, keysAndValues...)
 }
 
+func IsDebug(ctx context.Context) bool {
+	return global.IsDebug(ctx)
+}
+
 // Dump should be used only during development and should not stay in production code.
 func Dump(msg string, v ...interface{}) {
 	global.Dump(msg, v...)
