@@ -1,3 +1,7 @@
 [[constraint]]
+  name = "github.com/olivere/elastic"
+  version = "6.1.8"
+
+[[constraint]]
   name = "gitlab.com/proemergotech/geb-client-go"
   source = "git@gitlab.com:proemergotech/geb-client-go.git"

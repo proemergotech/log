@@ -1,5 +1,8 @@
 # Release Notes
 
+## 0.1.4 / 2018.05.23
+- added elastic logger
+
 ## 0.1.3 / 2018-04-19
 - added IsDebug() to global logger
 
