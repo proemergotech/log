@@ -1,5 +1,8 @@
 # Release Notes
 
+## 0.1.5 / 2018.05.25
+- removed version contraint from elastic library
+
 ## 0.1.4 / 2018.05.23
 - added elastic logger
 
