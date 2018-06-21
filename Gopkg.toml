@@ -1,7 +1,4 @@
 [[constraint]]
-  name = "github.com/olivere/elastic"
-
-[[constraint]]
   name = "gitlab.com/proemergotech/geb-client-go"
   source = "git@gitlab.com:proemergotech/geb-client-go.git"
 

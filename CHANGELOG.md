@@ -1,5 +1,8 @@
 # Release Notes
 
+## 0.1.6 / 2018.06.21
+- added Echo web framework logger
+
 ## 0.1.5 / 2018.05.25
 - removed version contraint from elastic library
 
