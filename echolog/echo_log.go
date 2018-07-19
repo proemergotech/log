@@ -112,7 +112,8 @@ func DebugMiddleware(l log.Logger, logRequest bool, logResponse bool) echo.Middl
 				message = "error " + message + ": " + err.Error()
 			}
 
-			l.Debug(req.Context(), message, fields...)
+			// eCtx request context might have been updated since we fetched eCtx.Request()
+			l.Debug(eCtx.Request().Context(), message, fields...)
 
 			return err
 		}
