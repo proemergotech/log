@@ -1,5 +1,8 @@
 # Release Notes
 
+## 0.1.8 / 2018.07.30
+- add development zap encoder, it adds stacktrace from the error object, indent the fields, adds color output(just for the levels by default)
+
 ## 0.1.7 / 2018.07.19
 - fixed echo debug middleware in case trace middleware runs after log middleware
 
