@@ -11,6 +11,12 @@ func SetGlobalLogger(l Logger) {
 	global = l
 }
 
+// GlobalLogger gets the Logger instance used in global scope.
+// It's not thread safe.
+func GlobalLogger() Logger {
+	return global
+}
+
 func Debug(ctx context.Context, msg string, keysAndValues ...interface{}) {
 	global.Debug(ctx, msg, keysAndValues...)
 }

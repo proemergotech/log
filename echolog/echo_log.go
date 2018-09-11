@@ -39,27 +39,6 @@ func (cw *recordingWriter) WriteString(str string) (int, error) {
 	return cnt, err
 }
 
-// ErrorMiddleware return a middleware which will log all the Errors in *echo.Context depending on the status code.
-// When "status >= 400 && status < 500" it will be logged as a warn, otherwise as an error.
-func ErrorMiddleware(l log.Logger) echo.MiddlewareFunc {
-	return func(next echo.HandlerFunc) echo.HandlerFunc {
-		return func(eCtx echo.Context) error {
-			err := next(eCtx)
-
-			if err != nil {
-				status := eCtx.Response().Status
-				if status >= 400 && status < 500 {
-					l.Warn(eCtx.Request().Context(), err.Error(), "error", err)
-				} else {
-					l.Error(eCtx.Request().Context(), err.Error(), "error", err)
-				}
-			}
-
-			return err
-		}
-	}
-}
-
 // DebugMiddleware return a middleware which will log additional data, if debug level is enabled in the logger.
 // Request and response will be logged, based on the passed parameters.
 // If the request/response body is more than 5000 bytes, it will be ignored.
