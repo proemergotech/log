@@ -1,5 +1,9 @@
 # Release Notes
 
+## 0.2.0 / 2018.09.11
+- add GlobalLogger function
+- remove echo ErrorMiddleware, because in our services the http status code is set after this middleware running 
+
 ## 0.1.8 / 2018.07.30
 - add development zap encoder, it adds stacktrace from the error object, indent the fields, adds color output(just for the levels by default)
 
