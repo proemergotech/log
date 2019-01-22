@@ -1,5 +1,8 @@
 # Release Notes
 
+## 0.2.1 / 2019.01.22
+- use "error" string for zap encoder output for all levels above error
+
 ## 0.2.0 / 2018.09.11
 - add GlobalLogger function
 - remove echo ErrorMiddleware, because in our services the http status code is set after this middleware running 

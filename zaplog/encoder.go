@@ -61,7 +61,7 @@ func (de *Encoder) EncodeEntry(entry zapcore.Entry, fields []zapcore.Field) (*bu
 
 	buf.AppendString(entry.Time.Format(time.RFC3339Nano))
 	buf.AppendString(" ")
-	buf.AppendString(entry.Level.String())
+	buf.AppendString(levelToString(entry.Level))
 	buf.AppendString(" ")
 	if entry.LoggerName != "" {
 		buf.AppendString(entry.LoggerName)
@@ -90,4 +90,17 @@ func (de *Encoder) EncodeEntry(entry zapcore.Entry, fields []zapcore.Field) (*bu
 	buf.Write(fieldsBuf.Bytes())
 
 	return buf, nil
+}
+
+func levelToString(lvl zapcore.Level) string {
+	switch lvl {
+	case zapcore.DebugLevel:
+		return "debug"
+	case zapcore.InfoLevel:
+		return "info"
+	case zapcore.WarnLevel:
+		return "warn"
+	default:
+		return "error"
+	}
 }
