@@ -2,11 +2,14 @@ package echolog
 
 import (
 	"bytes"
+	"context"
 	"io/ioutil"
 	"net/http"
 	"net/http/httputil"
 
 	"github.com/labstack/echo"
+	"github.com/pkg/errors"
+
 	"gitlab.com/proemergotech/log-go"
 )
 
@@ -95,6 +98,22 @@ func DebugMiddleware(l log.Logger, logRequest bool, logResponse bool) echo.Middl
 			l.Debug(eCtx.Request().Context(), message, fields...)
 
 			return err
+		}
+	}
+}
+
+// RecoveryMiddleware returns a middleware which will log in our format an add the panic stacktrace to the json.
+func RecoveryMiddleware(l log.Logger) echo.MiddlewareFunc {
+	return func(next echo.HandlerFunc) echo.HandlerFunc {
+		return func(eCtx echo.Context) error {
+			defer func() {
+				if r := recover(); r != nil {
+					err := errors.Errorf("%+v", r)
+					l.Error(context.Background(), "Echo recovered from panic", "error", err)
+					eCtx.Error(err)
+				}
+			}()
+			return next(eCtx)
 		}
 	}
 }
