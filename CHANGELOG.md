@@ -1,10 +1,15 @@
 # Release Notes
 
-## 0.2.2 / 2019-03-26
+## v0.3.0 / 2019-12-12
+- use go modules
+- update to echo v4
+- remove gin
+
+## v0.2.2 / 2019-03-26
 - added http log for adding logging capability to go sdk http client
 - modified elasticlog package to only contain a logger for elastic client errors
 
-## 0.2.1 / 2019-01-22
+## v0.2.1 / 2019-01-22
 - use "error" string for zap encoder output for all levels above error
 
 ## 0.2.0 / 2018-09-11
