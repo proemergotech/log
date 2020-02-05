@@ -1,4 +1,4 @@
-module gitlab.com/proemergotech/log-go
+module gitlab.com/proemergotech/log-go/v2
 
 go 1.13
 
@@ -11,9 +11,8 @@ require (
 	github.com/nbio/st v0.0.0-20140626010706-e9e8d9816f32 // indirect
 	github.com/olivere/elastic v6.1.22+incompatible
 	github.com/pkg/errors v0.8.0
-	github.com/ugorji/go v0.0.0-20180112141927-9831f2c3ac10 // indirect
 	github.com/valyala/fasttemplate v1.1.0 // indirect
-	gitlab.com/proemergotech/geb-client-go v0.0.0-20180219104357-0c4869a38c69
+	gitlab.com/proemergotech/geb-client-go/v2 v2.0.0
 	go.uber.org/atomic v1.3.1 // indirect
 	go.uber.org/multierr v1.1.0 // indirect
 	go.uber.org/zap v1.7.1

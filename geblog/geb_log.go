@@ -1,7 +1,7 @@
 package geblog
 
 import (
-	"gitlab.com/proemergotech/geb-client-go/geb"
+	"gitlab.com/proemergotech/geb-client-go/v2/geb"
 	"gitlab.com/proemergotech/log-go"
 )
 
