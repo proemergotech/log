@@ -2,7 +2,7 @@ package geblog
 
 import (
 	"gitlab.com/proemergotech/geb-client-go/v2/geb"
-	"gitlab.com/proemergotech/log-go"
+	"gitlab.com/proemergotech/log-go/v2"
 )
 
 // OnEventMiddleware return a middleware which will log additional data about event if debug level is enabled in the logger.

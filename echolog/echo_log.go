@@ -10,7 +10,7 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/pkg/errors"
 
-	"gitlab.com/proemergotech/log-go"
+	"gitlab.com/proemergotech/log-go/v2"
 )
 
 const maxBodyLength = 5000

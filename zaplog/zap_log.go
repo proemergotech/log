@@ -4,7 +4,7 @@ import (
 	"context"
 	"strconv"
 
-	"gitlab.com/proemergotech/log-go"
+	"gitlab.com/proemergotech/log-go/v2"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 )
