@@ -8,9 +8,10 @@ require (
 	github.com/mailru/easyjson v0.0.0-20180323154445-8b799c424f57 // indirect
 	github.com/mattn/go-colorable v0.1.4 // indirect
 	github.com/mattn/go-isatty v0.0.11 // indirect
+	github.com/modern-go/reflect2 v1.0.1 // indirect
 	github.com/nbio/st v0.0.0-20140626010706-e9e8d9816f32 // indirect
 	github.com/olivere/elastic v6.1.22+incompatible
-	github.com/pkg/errors v0.8.0
+	github.com/pkg/errors v0.8.1
 	github.com/valyala/fasttemplate v1.1.0 // indirect
 	gitlab.com/proemergotech/geb-client-go/v2 v2.0.0
 	go.uber.org/atomic v1.3.1 // indirect
