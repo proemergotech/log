@@ -1,5 +1,10 @@
 # Release Notes
 
+## v3.0.0 / 2020-03-05
+- rename geblog.OnEventMiddleware to geblog.OnEventDebugMiddleware
+- create geblog.OnEventErrorMiddleware
+- release version v3.0.0
+
 ## v2.0.1 / 2020-02-05
 - fix imports
 

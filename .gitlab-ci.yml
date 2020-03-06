@@ -15,3 +15,8 @@ verify:
   except:
     - master
 
+build:
+  stage: build
+  image: golang:1.14
+  script:
+    - go build -a -mod=readonly -o /dev/null ./...

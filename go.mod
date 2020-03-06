@@ -1,6 +1,6 @@
-module gitlab.com/proemergotech/log-go/v2
+module gitlab.com/proemergotech/log-go/v3
 
-go 1.13
+go 1.14
 
 require (
 	github.com/fortytw2/leaktest v1.3.0 // indirect
