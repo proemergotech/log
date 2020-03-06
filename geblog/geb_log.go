@@ -2,12 +2,23 @@ package geblog
 
 import (
 	"gitlab.com/proemergotech/geb-client-go/v2/geb"
-	"gitlab.com/proemergotech/log-go/v2"
+	"gitlab.com/proemergotech/log-go/v3"
 )
 
-// OnEventMiddleware return a middleware which will log additional data about event if debug level is enabled in the logger.
+// OnEventErrorMiddleware return a middleware which will log errors on ERROR level. s.
+func OnEventErrorMiddleware(l log.Logger) geb.Middleware {
+	return func(e *geb.Event, next func(*geb.Event) error) error {
+		if err := next(e); err != nil {
+			l.Error(e.Context(), err.Error(), "error", err)
+		}
+
+		return nil
+	}
+}
+
+// OnEventDebugMiddleware return a middleware which will log additional data about event if debug level is enabled in the logger.
 // Event header and body will be logged, based on the passed parameters.
-func OnEventMiddleware(l log.Logger, logEventBody bool) geb.Middleware {
+func OnEventDebugMiddleware(l log.Logger, logEventBody bool) geb.Middleware {
 	return func(e *geb.Event, next func(*geb.Event) error) error {
 		err := next(e)
 
