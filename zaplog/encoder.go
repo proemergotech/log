@@ -1,6 +1,7 @@
 package zaplog
 
 import (
+	"gitlab.com/proemergotech/log-go/v3"
 	"go.uber.org/zap/buffer"
 	"go.uber.org/zap/zapcore"
 
@@ -8,7 +9,10 @@ import (
 	"time"
 )
 
-const EncoderType = "dliver"
+const (
+	EncoderType          = "dliver"
+	messageTruncateLimit = 500
+)
 
 type Encoder struct {
 	zapcore.Encoder
@@ -68,7 +72,7 @@ func (de *Encoder) EncodeEntry(entry zapcore.Entry, fields []zapcore.Field) (*bu
 		buf.AppendString(" - ")
 	}
 
-	buf.AppendString(msgReplacer.Replace(entry.Message))
+	buf.AppendString(log.Truncate(msgReplacer.Replace(entry.Message), messageTruncateLimit, "..."))
 	buf.AppendString(" ##<")
 
 	for i := len(fields) - 1; i >= 0; i-- {
@@ -87,7 +91,7 @@ func (de *Encoder) EncodeEntry(entry zapcore.Entry, fields []zapcore.Field) (*bu
 		return nil, err
 	}
 
-	buf.Write(fieldsBuf.Bytes())
+	_, _ = buf.Write(fieldsBuf.Bytes())
 
 	return buf, nil
 }

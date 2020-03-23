@@ -2,6 +2,7 @@ package log
 
 import (
 	"context"
+	"unicode/utf8"
 )
 
 const (
@@ -26,4 +27,26 @@ type Logger interface {
 // ContextMapper is an interface that returns Values which should be included in the log fields.
 type ContextMapper interface {
 	Values(ctx context.Context) map[string]string
+}
+
+func Truncate(str string, length int, concat string) string {
+	if len(str) <= length {
+		return str
+	}
+
+	finalLength := length - len(concat)
+	headLength := finalLength/2 + finalLength%2
+	tailLength := finalLength / 2
+
+	for !utf8.RuneStart(str[headLength]) {
+		headLength--
+	}
+	for !utf8.RuneStart(str[tailLength]) {
+		tailLength++
+	}
+
+	head := str[0:headLength]
+	tail := str[len(str)-tailLength:]
+
+	return head + concat + tail
 }

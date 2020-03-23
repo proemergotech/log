@@ -33,7 +33,7 @@ func (t *loggingTransport) RoundTrip(req *http.Request) (*http.Response, error) 
 	if t.logRequest && t.logger.IsDebug(req.Context()) {
 		reqDump, _ = httputil.DumpRequest(req, true)
 
-		fields = append(fields, "request", string(limitBody(reqDump)))
+		fields = append(fields, "request", log.Truncate(string(reqDump), maxBodyLength, "\n...\n"))
 	}
 
 	res, err := t.inner.RoundTrip(req)
@@ -43,7 +43,7 @@ func (t *loggingTransport) RoundTrip(req *http.Request) (*http.Response, error) 
 	if err == nil && t.logResponse && t.logger.IsDebug(req.Context()) {
 		resDump, _ = httputil.DumpResponse(res, true)
 		responseLength = len(resDump)
-		fields = append(fields, "response", string(limitBody(resDump)))
+		fields = append(fields, "response", log.Truncate(string(resDump), maxBodyLength, "\n...\n"))
 	}
 
 	fields = append(fields, "request-length", req.ContentLength)
@@ -59,21 +59,4 @@ func (t *loggingTransport) RoundTrip(req *http.Request) (*http.Response, error) 
 	t.logger.Debug(req.Context(), t.prefix+message, fields...)
 
 	return res, err
-}
-
-func limitBody(body []byte) []byte {
-	if len(body) <= maxBodyLength {
-		return body
-	}
-
-	concat := "\n...\n"
-	headTailLength := (maxBodyLength - len(concat)) / 2
-	head := body[0:headTailLength]
-	tail := body[len(body)-headTailLength:]
-	body = make([]byte, 0, maxBodyLength)
-	body = append(body, head...)
-	body = append(body, concat...)
-	body = append(body, tail...)
-
-	return body
 }
