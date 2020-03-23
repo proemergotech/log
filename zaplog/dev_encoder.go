@@ -167,7 +167,7 @@ func (de *devEncoder) EncodeEntry(entry zapcore.Entry, fields []zapcore.Field) (
 		panic(err)
 	}
 
-	buf.Write(b)
+	_, _ = buf.Write(b)
 	buf.AppendString("\n")
 	buf.AppendString(errWithStack)
 

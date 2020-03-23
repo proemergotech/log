@@ -1,5 +1,8 @@
 # Release Notes
 
+## v3.0.1 / 2020-03-20
+- truncate long zaplog messages
+
 ## v3.0.0 / 2020-03-05
 - rename geblog.OnEventMiddleware to geblog.OnEventDebugMiddleware
 - create geblog.OnEventErrorMiddleware
