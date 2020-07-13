@@ -1,5 +1,8 @@
 # Release Notes
 
+## v3.0.2 / 2020-07-09
+- create throttle logger
+
 ## v3.0.1 / 2020-03-20
 - truncate long zaplog messages
 
