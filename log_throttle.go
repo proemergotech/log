@@ -90,7 +90,7 @@ func (t *ThrottleLogger) Flush() {
 
 		keysAndValues := tLog.keysAndValues
 		if logCount > 1 {
-			keysAndValues = append(keysAndValues, "times", tLog.count)
+			keysAndValues = append(keysAndValues, "times", logCount)
 		}
 
 		t.logMessage(tLog.ctx, tKey.level, tKey.msg, keysAndValues...)

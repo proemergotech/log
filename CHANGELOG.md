@@ -1,5 +1,8 @@
 # Release Notes
 
+## v3.0.3 / 2020-08-05
+- fix data race in throttle logger
+
 ## v3.0.2 / 2020-07-09
 - create throttle logger
 
