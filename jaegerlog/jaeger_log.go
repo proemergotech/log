@@ -5,7 +5,8 @@ import (
 	"strconv"
 
 	"github.com/pkg/errors"
-	"gitlab.com/proemergotech/log-go/v3"
+
+	"github.com/proemergotech/log/v3"
 )
 
 type JaegerLogger struct {

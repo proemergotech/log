@@ -4,9 +4,10 @@ import (
 	"context"
 	"strconv"
 
-	"gitlab.com/proemergotech/log-go/v3"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
+
+	"github.com/proemergotech/log/v3"
 )
 
 type logger struct {

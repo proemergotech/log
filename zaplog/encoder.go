@@ -1,12 +1,13 @@
 package zaplog
 
 import (
-	"gitlab.com/proemergotech/log-go/v3"
+	"strings"
+	"time"
+
 	"go.uber.org/zap/buffer"
 	"go.uber.org/zap/zapcore"
 
-	"strings"
-	"time"
+	"github.com/proemergotech/log/v3"
 )
 
 const (

@@ -5,7 +5,7 @@ import (
 	"fmt"
 
 	"github.com/olivere/elastic"
-	"gitlab.com/proemergotech/log-go/v3"
+	"github.com/proemergotech/log/v3"
 )
 
 type errorLogger struct {

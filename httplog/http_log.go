@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"net/http/httputil"
 
-	"gitlab.com/proemergotech/log-go/v3"
+	"github.com/proemergotech/log/v3"
 )
 
 const maxBodyLength = 5000

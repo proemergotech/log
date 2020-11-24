@@ -1,6 +1,6 @@
-# Log package for the dliver system
+# Log package for our systems
 
-Log packages for the different frameworks we use in dliver.
+Log packages for the different frameworks we use in our systems.
 
 ## Installation
 
@@ -8,7 +8,7 @@ Log packages for the different frameworks we use in dliver.
 2. Run go build/run/tidy
 
 ```bash
-go get -u gitlab.com/proemergotech/log-go v0.3.0
+go get -u github.com/proemergotech/log v0.3.0
 ```
 
 ## Usage
@@ -69,17 +69,7 @@ If the error wrapped other errors and implements the `causer` interface, the nes
 
 For a complete example see [errorfields](./_examples/errorfields/main.go).
 
-## Documentation
-
-Private repos don't show up on godoc.org so you have to run it locally.
-
-```
-godoc -http=":6060"
-```
-
-Then open http://localhost:6060/pkg/gitlab.com/proemergotech/log-go/
-
 ## Development
 
 - install go
-- check out project to: $GOPATH/src/gitlab.com/proemergotech/log-go
+- check out project to: $GOPATH/src/github.com/proemergotech/log
