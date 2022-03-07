@@ -1,6 +1,10 @@
 package httplog
 
 import (
+	"bytes"
+	"compress/gzip"
+	"io"
+	"io/ioutil"
 	"net/http"
 	"net/http/httputil"
 
@@ -31,9 +35,26 @@ func (t *loggingTransport) RoundTrip(req *http.Request) (*http.Response, error) 
 	fields := make([]interface{}, 0)
 	var reqDump []byte
 	if t.logRequest && t.logger.IsDebug(req.Context()) {
+		var content []byte
+		var gzipEncoded bool
+		for _, value := range req.Header.Values("Content-Encoding") {
+			if value == "gzip" {
+				gzipEncoded = true
+				break
+			}
+		}
+
+		if gzipEncoded {
+			content, _ = ioutil.ReadAll(req.Body)
+			req.Body = decompressGzipContent(ioutil.NopCloser(bytes.NewReader(content)))
+		}
 		reqDump, _ = httputil.DumpRequest(req, true)
 
 		fields = append(fields, "request", log.Truncate(string(reqDump), maxBodyLength, "\n...\n"))
+
+		if gzipEncoded {
+			req.Body = ioutil.NopCloser(bytes.NewReader(content))
+		}
 	}
 
 	res, err := t.inner.RoundTrip(req)
@@ -59,4 +80,22 @@ func (t *loggingTransport) RoundTrip(req *http.Request) (*http.Response, error) 
 	t.logger.Debug(req.Context(), t.prefix+message, fields...)
 
 	return res, err
+}
+
+func decompressGzipContent(body io.ReadCloser) io.ReadCloser {
+	var buf bytes.Buffer
+	gzr, err := gzip.NewReader(body)
+	if err != nil {
+		return body
+	}
+	_, err = io.Copy(&buf, gzr) // #nosec
+	if err != nil {
+		return body
+	}
+
+	if err := gzr.Close(); err != nil {
+		return body
+	}
+
+	return ioutil.NopCloser(&buf)
 }

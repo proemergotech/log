@@ -1,7 +1,11 @@
 # Release Notes
 
-## v3.0.4 / 2020-11-24
-- migrated to GitHub
+## v3.1.0 / 2022-03-07
+- add geb log
+- sync with gitlab
+
+## v3.0.4 / 2021-04-27
+- support gzip in http_log
 
 ## v3.0.3 / 2020-08-05
 - fix data race in throttle logger
