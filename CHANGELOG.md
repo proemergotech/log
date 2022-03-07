@@ -1,5 +1,12 @@
 # Release Notes
 
+## v3.1.0 / 2022-03-07
+- add geb log
+- sync with gitlab
+
+## v3.0.4 / 2021-04-27
+- support gzip in http_log
+
 ## v3.0.4 / 2021-04-27
 - support gzip in http_log
 
