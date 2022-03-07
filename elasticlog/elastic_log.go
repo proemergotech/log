@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/olivere/elastic"
+
 	"github.com/proemergotech/log/v3"
 )
 
